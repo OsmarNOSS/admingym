@@ -1,0 +1,33 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('cliente_rutina', function (Blueprint $table) {
+        $table->id();
+        $table->foreignId('cliente_id')->constrained('clientes')->cascadeOnDelete();
+        $table->foreignId('rutina_id')->constrained('rutinas')->cascadeOnDelete();
+        $table->foreignId('entrenador_id')->constrained('entrenadores')->restrictOnDelete();
+        $table->date('fecha_asignacion');
+        $table->boolean('activa')->default(true);
+        $table->unique(['cliente_id', 'rutina_id']);
+        $table->timestamps();
+    });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('cliente_rutina');
+    }
+};
