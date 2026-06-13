@@ -1,0 +1,89 @@
+version: '3.8'
+
+services:
+
+  app:
+    build: .
+    container_name: gimnasio_app
+    restart: always
+    depends_on:
+      - mysql-primary
+
+    environment:
+      DB_HOST: mysql-primary
+      DB_PORT: 3306
+      DB_DATABASE: gimnasio
+      DB_USERNAME: laravel
+      DB_PASSWORD: laravel_pass
+    volumes:
+      - .:/var/www/html
+      - ./storage:/var/www/html/storage
+    networks:
+      - gimnasio_net
+
+  nginx:
+    image: nginx:alpine
+    container_name: gimnasio_nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - .:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - gimnasio_net
+
+  mysql-primary:
+    image: mysql:8.0
+    container_name: mysql_primary
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_pass
+      MYSQL_DATABASE: gimnasio
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravel_pass
+    volumes:
+      - mysql-primary-data:/var/lib/mysql
+      - ./mysql/primary/my.cnf:/etc/mysql/conf.d/my.cnf
+    networks:
+      - gimnasio_net
+
+  mysql-replica:
+    image: mysql:8.0
+    container_name: mysql_replica
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_pass
+    volumes:
+      - mysql-replica-data:/var/lib/mysql
+      - ./mysql/replica/my.cnf:/etc/mysql/conf.d/my.cnf
+    depends_on:
+      - mysql-primary
+    networks:
+      - gimnasio_net
+
+  proxysql:
+    image: proxysql/proxysql:2.6.5
+    container_name: proxysql
+    restart: always
+    volumes:
+      - ./proxysql/proxysql.cnf:/etc/proxysql.cnf
+    ports:
+      - "6033:6033"
+      - "6032:6032"
+    depends_on:
+      - mysql-primary
+      - mysql-replica
+    networks:
+      - gimnasio_net
+
+volumes:
+  mysql-primary-data:
+  mysql-replica-data:
+
+networks:
+  gimnasio_net:
+    driver: bridge

@@ -9,7 +9,7 @@
 <body class="min-h-screen bg-white dark:bg-zinc-800">
     <flux:sidebar sticky collapsible="mobile" class="border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
         <flux:sidebar.header>
-            <x-app-logo :sidebar="true" href="{{ route('dashboard') }}" wire:navigate />
+            <x-app-logo :sidebar="true" href="{{ route('dashboard') }}" />
             <flux:sidebar.collapse class="lg:hidden" />
         </flux:sidebar.header>
 
@@ -22,7 +22,7 @@
         icon="home"
         :href="route('dashboard')"
         :current="request()->routeIs('dashboard')"
-        wire:navigate>
+       >
         Dashboard
     </flux:sidebar.item>
 @endif
@@ -33,7 +33,7 @@
         icon="building-office"
         :href="route('sucursal.index')"
         :current="request()->routeIs('sucursal.*')"
-        wire:navigate>
+       >
         Sucursales
     </flux:sidebar.item>
 
@@ -41,7 +41,7 @@
         icon="user"
         :href="route('cliente.index')"
         :current="request()->routeIs('cliente.*')"
-        wire:navigate>
+       >
         Clientes
     </flux:sidebar.item>
 
@@ -49,7 +49,7 @@
         icon="shield-check"
         :href="route('entrenador.index')"
         :current="request()->routeIs('entrenador.*')"
-        wire:navigate>
+       >
         Entrenadores
     </flux:sidebar.item>
 
@@ -57,7 +57,7 @@
         icon="users"
         :href="route('membresia.index')"
         :current="request()->routeIs('membresia.*')"
-        wire:navigate>
+       >
         Membresías
     </flux:sidebar.item>
 
@@ -65,7 +65,7 @@
         icon="users"
         :href="route('pago.index')"
         :current="request()->routeIs('pago.*')"
-        wire:navigate>
+       >
         Pagos
     </flux:sidebar.item>
 
@@ -73,7 +73,7 @@
         icon="users"
         :href="route('usuario.index')"
         :current="request()->routeIs('usuario.*')"
-        wire:navigate>
+       >
         Usuarios
     </flux:sidebar.item>
 @endrole
@@ -84,7 +84,7 @@
         icon="user"
         :href="route('cliente.index')"
         :current="request()->routeIs('cliente.*')"
-        wire:navigate>
+       >
         Clientes
     </flux:sidebar.item>
 
@@ -92,7 +92,7 @@
         icon="shield-check"
         :href="route('entrenador.index')"
         :current="request()->routeIs('entrenador.*')"
-        wire:navigate>
+       >
         Entrenadores
     </flux:sidebar.item>
 
@@ -100,7 +100,7 @@
         icon="users"
         :href="route('membresia.index')"
         :current="request()->routeIs('membresia.*')"
-        wire:navigate>
+       >
         Membresías
     </flux:sidebar.item>
 
@@ -108,7 +108,7 @@
         icon="users"
         :href="route('pago.index')"
         :current="request()->routeIs('pago.*')"
-        wire:navigate>
+       >
         Pagos
     </flux:sidebar.item>
 @endrole
@@ -119,7 +119,7 @@
         icon="user"
         :href="route('recepcion.clientes.index')"
         :current="request()->routeIs('recepcion.clientes.*')"
-        wire:navigate>
+       >
         Clientes
     </flux:sidebar.item>
 
@@ -127,7 +127,7 @@
         icon="user"
         :href="route('asistencias.index')"
         :current="request()->routeIs('asistencias.*')"
-        wire:navigate>
+       >
         Asistencias
     </flux:sidebar.item>
 
@@ -135,14 +135,14 @@
         icon="users"
         :href="route('recepcion.membresias.index')"
         :current="request()->routeIs('recepcion.membresias.*')"
-        wire:navigate>
+       >
         Membresías
     </flux:sidebar.item>
     <flux:sidebar.item
         icon="users"
         :href="route('pago.index')"
         :current="request()->routeIs('pago.*')"
-        wire:navigate>
+       >
         Pagos
     </flux:sidebar.item>
 @endrole
@@ -153,7 +153,7 @@
         icon="user"
         :href="route('cliente-panel.perfil')"
         :current="request()->routeIs('cliente-panel.perfil')"
-        wire:navigate>
+       >
         Mi Perfil
     </flux:sidebar.item>
 
@@ -161,7 +161,7 @@
         icon="users"
         :href="route('cliente-panel.membresia')"
         :current="request()->routeIs('cliente-panel.membresia')"
-        wire:navigate>
+       >
         Mi Membresía
     </flux:sidebar.item>
 
@@ -169,7 +169,7 @@
         icon="user"
         :href="route('cliente-panel.entrenador')"
         :current="request()->routeIs('cliente-panel.entrenador')"
-        wire:navigate>
+       >
         Mi Entrenador
     </flux:sidebar.item>
 
@@ -177,7 +177,7 @@
         icon="users"
         :href="route('cliente-panel.rutinas')"
         :current="request()->routeIs('cliente-panel.rutinas')"
-        wire:navigate>
+       >
         Mis Rutinas
     </flux:sidebar.item>
 @endrole
@@ -188,14 +188,14 @@
         icon="user"
         :href="route('entrenador-panel.perfil')"
         :current="request()->routeIs('entrenador-panel.perfil')"
-        wire:navigate>
+       >
         Mi Perfil
     </flux:sidebar.item>
     <flux:sidebar.item
         icon="users"
         :href="route('entrenador-panel.mis-clientes')"
         :current="request()->routeIs('entrenador-panel.mis-clientes')"
-        wire:navigate>
+       >
         Mis Clientes
     </flux:sidebar.item>
 
@@ -203,7 +203,7 @@
         icon="user"
         :href="route('entrenador-panel.elegir-clientes')"
         :current="request()->routeIs('entrenador-panel.elegir-clientes')"
-        wire:navigate>
+       >
         Elegir Clientes
     </flux:sidebar.item>
 
@@ -211,7 +211,7 @@
         icon="users"
         :href="route('entrenador-panel.rutinas.index')"
         :current="request()->routeIs('entrenador-panel.rutinas.*')"
-        wire:navigate>
+       >
         Rutinas
     </flux:sidebar.item>
 @endrole
@@ -258,7 +258,7 @@
                 <flux:menu.separator />
 
                 <flux:menu.radio.group>
-                    <flux:menu.item :href="route('profile.edit')" icon="cog" wire:navigate class="!text-zinc-900 dark:!text-white">
+                    <flux:menu.item :href="route('profile.edit')" icon="cog" class="!text-zinc-900 dark:!text-white">
                         {{ __('Settings') }}
                     </flux:menu.item>
                 </flux:menu.radio.group>

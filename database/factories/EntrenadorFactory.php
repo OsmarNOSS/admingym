@@ -3,6 +3,7 @@ namespace Database\Factories;
 
 use App\Models\Sucursal;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Factory as FakerFactory;
 
 class EntrenadorFactory extends Factory
 {
@@ -15,8 +16,8 @@ class EntrenadorFactory extends Factory
 
         return [
             'sucursal_id'  => Sucursal::inRandomOrder()->first()->id,
-            'telefono'     => fake()->numerify('715#######'),
-            'especialidad' => fake()->randomElement($especialidades),
+            'telefono'     => FakerFactory::create()->numerify('715#######'),
+            'especialidad' => FakerFactory::create()->randomElement($especialidades),
             'activo'       => true,
             'foto_perfil'  => null,
         ];

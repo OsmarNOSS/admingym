@@ -4,6 +4,7 @@ namespace Database\Factories;
 use App\Models\Membresia;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Factory as FakerFactory;
 
 class PagoFactory extends Factory
 {
@@ -19,8 +20,8 @@ class PagoFactory extends Factory
             'registrado_por' => User::whereIn('rol', ['recepcionista', 'admin_sucursal'])
                                     ->inRandomOrder()->first()->id,
             'monto'          => $montos[$membresia->tipo],
-            'metodo_pago'    => fake()->randomElement(['efectivo', 'tarjeta', 'transferencia']),
-            'fecha_pago'     => fake()->dateTimeBetween('-1 year', 'now'),
+            'metodo_pago'    => FakerFactory::create()->randomElement(['efectivo', 'tarjeta', 'transferencia']),
+            'fecha_pago'     => FakerFactory::create()->dateTimeBetween('-1 year', 'now'),
             'concepto'       => 'Pago membresía ' . ucfirst($membresia->tipo),
         ];
     }

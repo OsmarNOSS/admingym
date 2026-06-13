@@ -2,6 +2,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Factory as FakerFactory;
 
 class RutinaFactory extends Factory
 {
@@ -15,10 +16,10 @@ class RutinaFactory extends Factory
         ];
 
         return [
-            'nombre'       => fake()->randomElement($nombres) . ' ' . fake()->bothify('??##'),
-            'descripcion'  => fake()->paragraph(3),
-            'nivel'        => fake()->randomElement(['principiante', 'intermedio', 'avanzado']),
-            'es_vip'       => fake()->boolean(20),
+            'nombre'       => FakerFactory::create()->randomElement($nombres) . ' ' . FakerFactory::create()->bothify('??##'),
+            'descripcion'  => FakerFactory::create()->paragraph(3),
+            'nivel'        => FakerFactory::create()->randomElement(['principiante', 'intermedio', 'avanzado']),
+            'es_vip'       => FakerFactory::create()->boolean(20),
             'activa'       => true,
             'foto_portada' => null,
         ];

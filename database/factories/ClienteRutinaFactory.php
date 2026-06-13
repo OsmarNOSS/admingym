@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\ClienteRutina;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Factory as FakerFactory;
 
 /**
  * @extends Factory<ClienteRutina>

@@ -44,6 +44,20 @@ return [
             'transaction_mode' => 'DEFERRED',
         ],
 
+
+        'mysql_primary' => [
+            'driver' => 'mysql',
+            'host' => 'mysql-primary',
+            'port' => '3306',
+            'database' => env('DB_DATABASE', 'gimnasio'),
+            'username' => env('DB_USERNAME', 'laravel'),
+            'password' => env('DB_PASSWORD', 'laravel_pass'),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DB_URL'),
